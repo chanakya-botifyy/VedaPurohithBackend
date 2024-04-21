@@ -355,11 +355,11 @@ router.get('/paymentStatus/:txnId', async (req, res) => {
             if (response.data.success === true) {
                 console.log("HI, Success")
                 // res.status(200).json({ success: true, message: 'Payment process completed' });
-                return res.redirect(`https://vedapurohith.com/PaymentStatus/${order_transation_id}`)
+                return res.redirect(`https://vedapurohith.com/PaymentStatus/1`)
             } else {
                 console.log("HI, Fail")
                 // res.status(200).json({ success: true, message: 'Payment Failed' });
-                return res.redirect(`https://vedapurohith.com/PaymentStatus/${order_transation_id}`)
+                return res.redirect(`https://vedapurohith.com/PaymentStatus/2`)
             }
         })
     } catch (error) {
