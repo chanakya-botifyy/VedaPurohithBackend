@@ -124,7 +124,7 @@ router.use('/Details', express.static("/Upload/PurohithData/Certificates"))
 router.post("/uploaddetails", upload.single("Details"), (req, res) => {
     res.json({
         sucess: 1,
-        image_url: `http://localhost:${port}/Details/${req.file.filename}`
+        image_url: `https://king-prawn-app-r46w3.ondigitalocean.app/Details/${req.file.filename}`
     })
 })
 

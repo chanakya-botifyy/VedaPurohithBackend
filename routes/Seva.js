@@ -25,7 +25,7 @@ router.use("/images", express.static("Upload/images"))
 router.post("/uploadseva", upload.single("SevaData"), (req, res) => {
     res.json({
         success: 1,
-        image_url: `http://localhost:${port}/images/${req.file.filename}`
+        image_url: `https://king-prawn-app-r46w3.ondigitalocean.app/images/${req.file.filename}`
     })
 })
 
@@ -89,11 +89,11 @@ router.post('/addSeva', upload.any('titleimage'), async (req, res) => {
     }
     const pujaData = new SevaData({
         id: id,
-        titleimage: `http://localhost:${port}/images/${req.files[0].filename}`,
+        titleimage: `https://king-prawn-app-r46w3.ondigitalocean.app/images/${req.files[0].filename}`,
         title: req.body.title,
         category: req.body.category,
         description: req.body.description,
-        items: `http://localhost:${port}/images/${req.files[1].filename}`,
+        items: `https://king-prawn-app-r46w3.ondigitalocean.app/images/${req.files[1].filename}`,
         cost: req.body.cost,
         gst:req.body.gst,
         addedDate:new Date(),
@@ -122,13 +122,13 @@ router.post('/updateSeva/:sevaId', upload.any('titleimage'), async (req, res) =>
         }
         console.log(req.files)
         if(req.files.length && req.files[0].fieldname === 'titleimage'){
-            pujaData = {...pujaData, titleimage: `http://localhost:${port}/images/${req.files[0].filename}`}
+            pujaData = {...pujaData, titleimage: `https://king-prawn-app-r46w3.ondigitalocean.app/images/${req.files[0].filename}`}
             console.log('hi')
         }if(req.files.length > 1 && req.files[1].fieldname === 'items'){
-                pujaData = {...pujaData, items: `http://localhost:${port}/images/${req.files[1].filename}`}
+                pujaData = {...pujaData, items: `https://king-prawn-app-r46w3.ondigitalocean.app/images/${req.files[1].filename}`}
             }
         if(req.files.length && req.files[0].fieldname === 'items'){
-            pujaData = {...pujaData, items: `http://localhost:${port}/images/${req.files[0].filename}`}
+            pujaData = {...pujaData, items: `https://king-prawn-app-r46w3.ondigitalocean.app/images/${req.files[0].filename}`}
         }
         console.log(pujaData)
         const reponse = await SevaData.updateOne({_id:sevaId},pujaData);

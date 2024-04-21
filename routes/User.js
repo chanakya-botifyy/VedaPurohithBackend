@@ -17,7 +17,7 @@ const Users = mongoose.model('UsersData', {
     },
     profileImage:{
         type :String,
-        default:"http://localhost:4000/ProfilePic/default profile.png",
+        default:"https://king-prawn-app-r46w3.ondigitalocean.app/ProfilePic/default profile.png",
         required:false
     },
     Email: {
@@ -81,7 +81,7 @@ router.post("/uploadProfile", upload.single("ProfilePic"), (req, res) => {
       }
     res.json({
         sucess: 1,
-        image_url: `http://localhost:${port}/ProfilePic/${req.file.filename}`
+        image_url: `https://king-prawn-app-r46w3.ondigitalocean.app/ProfilePic/${req.file.filename}`
     })
 })
 

@@ -139,7 +139,7 @@ router.post('/addOrder', middleware, async (req, res) => {
             merchantUserId: 12,
             name: exist.Name,
             amount: req.body.Total*100,
-            redirectUrl: `http://localhost:4000/paymentStatus/${order_transation_id}`,
+            redirectUrl: `https://king-prawn-app-r46w3.ondigitalocean.app/paymentStatus/${order_transation_id}`,
             mobileNumber: exist.Phone,
             paymentInstrument: {
                 type: 'PAY_PAGE'
@@ -284,7 +284,7 @@ router.get('/makePayment', async (req, res) => {
             merchantUserId: 12,
             name: "Rao",
             amount: 200,
-            redirectUrl: `http://localhost:3000/PaymentStatus/${order_transation_id}`,
+            redirectUrl: `https://vedapurohith.com/PaymentStatus/${order_transation_id}`,
             mobileNumber: 77745664555,
             paymentInstrument: {
                 type: 'PAY_PAGE'
@@ -355,11 +355,11 @@ router.get('/paymentStatus/:txnId', async (req, res) => {
             if (response.data.success === true) {
                 console.log("HI, Success")
                 // res.status(200).json({ success: true, message: 'Payment process completed' });
-                return res.redirect(`http://localhost:3000/PaymentStatus/${order_transation_id}`)
+                return res.redirect(`https://vedapurohith.com/PaymentStatus/${order_transation_id}`)
             } else {
                 console.log("HI, Fail")
                 // res.status(200).json({ success: true, message: 'Payment Failed' });
-                return res.redirect(`http://localhost:3000/PaymentStatus/${order_transation_id}`)
+                return res.redirect(`https://vedapurohith.com/PaymentStatus/${order_transation_id}`)
             }
         })
     } catch (error) {
