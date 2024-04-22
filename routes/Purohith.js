@@ -304,7 +304,7 @@ router.post('/PurohithLogin', async (req, res) => {
                 id:exist.id
             }
         }
-        jwt.sign(payload,'secret_ecom',{expiresIn:'100m'},
+        jwt.sign(payload,'secret_ecom',{expiresIn:'10m'},
         (err,token)=>{
             if(err) throw err;
             return res.json({ success: true, message: "Purohith logged in successfully", token, role:exist.Role, userId:exist._id });
