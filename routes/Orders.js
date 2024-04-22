@@ -76,6 +76,10 @@ const Orders = mongoose.model("orders", {
         default: "Upcoming",
         required: false
     },
+    PaymentStatus:{
+        type: String,
+        required: false
+    },
     Purohith: {
         type: {
             _id: String,
@@ -125,6 +129,7 @@ router.post('/addOrder', middleware, async (req, res) => {
         BillingAddress: req.body.BillingAddress,
         Duration: req.body.Duration,
         Category: req.body.Category,
+        PaymentStatus:req.body.PaymentStatus,
         status: req.body.status,
         TranscationId:order_transation_id
     })
@@ -350,8 +355,16 @@ router.get('/paymentStatus/:txnId', async (req, res) => {
                 'X-MERCHANT-ID': `${merchantId}`
             }
         }
-        axios.request(options).then(function (response) {
+        axios.request(options).then(async function (response) {
             console.log(response.data)
+            const { success } = response.data;
+            const paymentStatus = success ? 'Success' : 'Failed';
+
+            // Update payment status in your database
+            await Orders.findOneAndUpdate(
+                { PaymentStatus: paymentStatus },
+                { new: true }
+            );
             if (response.data.success === true) {
                 console.log("HI, Success")
                 // res.status(200).json({ success: true, message: 'Payment process completed' });
