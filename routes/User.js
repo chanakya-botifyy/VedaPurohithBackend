@@ -216,7 +216,7 @@ router.post("/login",async(req,res)=>{
                 id:exist.id
             }
         }
-        jwt.sign(payload,'secret_ecom',{expiresIn:'10m'},
+        jwt.sign(payload,'secret_ecom',{expiresIn:'100m'},
         (err,token)=>{
             if(err) throw err;
             return res.json({ success: true, message: "Login successful", token, role:exist.Role, userId:exist._id });
