@@ -357,14 +357,14 @@ router.get('/paymentStatus/:txnId', async (req, res) => {
         }
         axios.request(options).then(async function (response) {
             console.log(response.data)
-            const { success } = response.data;
-            const paymentStatus = success ? 'Success' : 'Failed';
+            // const { success } = response.data;
+            // const paymentStatus = success ? 'Success' : 'Failed';
 
-            // Update payment status in your database
-            await Orders.findOneAndUpdate(
-                { PaymentStatus: paymentStatus },
-                { new: true }
-            );
+            // // Update payment status in your database
+            // await Orders.findOneAndUpdate(
+            //     { PaymentStatus: paymentStatus },
+            //     { new: true }
+            // );
             if (response.data.success === true) {
                 console.log("HI, Success")
                 // res.status(200).json({ success: true, message: 'Payment process completed' });
